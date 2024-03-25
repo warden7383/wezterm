@@ -1,6 +1,6 @@
 local wezterm = require("wezterm")
 local config = {}
-config.default_prog = { 'pwsh.exe' }
+-- config.default_prog = { 'pwsh.exe' }
 config.font = wezterm.font("JetBrainsMonoNL Nerd Font", { weight = "DemiBold", stretch = "Normal", style = "Normal" }) -- C:\USERS\ANDREW NG\APPDATA\LOCAL\MICROSOFT\WINDOWS\FONTS\JETBRAINSMONONLNERDFONT-REGULAR.TTF, DirectWrite
 config.font_size = 10.0
 config.line_height = 0.9
