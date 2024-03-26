@@ -1,7 +1,7 @@
 local wezterm = require("wezterm")
 local config = {}
 config.default_prog = { 'pwsh.exe' }
-config.font = wezterm.font("JetBrainsMonoNL Nerd Font", { weight = "Regular", stretch = "Normal", style = "Normal" }) -- C:\USERS\ANDREW NG\APPDATA\LOCAL\MICROSOFT\WINDOWS\FONTS\JETBRAINSMONONLNERDFONT-REGULAR.TTF, DirectWrite
+config.font = wezterm.font("JetBrainsMonoNL Nerd Font", { weight = "Light", stretch = "Normal", style = "Normal" }) -- C:\USERS\ANDREW NG\APPDATA\LOCAL\MICROSOFT\WINDOWS\FONTS\JETBRAINSMONONLNERDFONT-REGULAR.TTF, DirectWrite
 config.font_size = 10.0
 config.line_height = 0.9
 config.color_scheme_dirs = { 'colors/tokyonight_night' }
@@ -54,7 +54,7 @@ config.background = {
 config.window_decorations = "INTEGRATED_BUTTONS|RESIZE"
 config.integrated_title_button_style = "Windows"
 config.integrated_title_button_color = "red"
-config.max_fps = 200
+config.max_fps = 60
 -- config.allow_square_glyphs_to_overflow_width = "Always"
 config.custom_block_glyphs = false
 
