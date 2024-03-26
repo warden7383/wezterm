@@ -13,13 +13,40 @@ print("testing")
 --     '#900000'
 --   }
 -- }
+-- config.window_background_image = 'C:/Users/Andrew Ng/.config/wezterm/background/Hell\'s_Paradise_Jigokuraku_Sagiri.jpg'
+-- config.window_background_image_hsb = {
+--   brightness = 0.4,
+--   --   -- hue = 1,
+--   --   -- saturation = 0.8,
+-- }
 
-config.window_background_image = 'C:/Users/Andrew Ng/.config/wezterm/background/Hell\'s_Paradise_Jigokuraku_Sagiri.jpg'
-config.window_background_image_hsb = {
-  brightness = 0.4,
-  --   -- hue = 1,
-  --   -- saturation = 0.8,
+-- NOTE: does not work(?)
+--
+-- config.window_background_opacity = 0.1
+-- config.win32_system_backdrop = 'Acrylic'
+-- config.window_background_gradient = {
+--   -- colors = { '#2F3045', '#0B1F1F' },
+--   colors = { '#e0af68', '#c0caf5' },
+--   -- Specifices a Linear gradient starting in the top left corner.
+--   orientation = { Linear = { angle = -45.0 } },
+-- }
+
+config.background = {
+  {
+    -- source = { File = wezterm.config_dir .. '/backdrops/space.jpg' },
+    source = { File = wezterm.config_dir .. '/background/Hell\'s_Paradise_Jigokuraku_Sagiri.jpg' },
+  },
+  {
+    -- source = { Color = '#1a1b26' }, --default tokyonight_night background (black/gray ish)
+    -- source = { Color = '#191a2e' }, --
+    -- source = { Color = '#131624' }, --
+    source = { Color = '#141524' }, --
+    height = '100%',
+    width = '100%',
+    opacity = 0.92,
+  },
 }
+
 -- config.source = {
 --   color = "blue"
 -- }
