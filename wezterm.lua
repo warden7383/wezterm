@@ -24,7 +24,7 @@ config.background = {
 config.window_decorations = "INTEGRATED_BUTTONS|RESIZE"
 config.integrated_title_button_style = "Windows"
 config.integrated_title_button_color = "red"
-config.max_fps = 60
+config.max_fps = 255 -- > 255 max fps returns a table error (at least on windows 11)
 -- config.allow_square_glyphs_to_overflow_width = "Always"
 config.custom_block_glyphs = false
 
