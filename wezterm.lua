@@ -116,7 +116,29 @@ config.tab_bar_style = {
     { Foreground = { Color = "#ed8796"}},
     { Text = "   "}
   },
+  -- active_tab_left = wezterm.format  {
+  --   { Background = { Color = "#24273a"}},
+  --   { Foreground = { Color = "#ed8796"}},
+  --   { Text = "   "}
+  -- },
+
+  -- new_tab_left = wezterm.format {
+  --   { Background = { Color = "#24273a"}},
+  --   -- { Foreground = { Color = "#ed8796"}},
+  --   { Text = "󱎕"}
+  -- },
+  -- new_tab_right = wezterm.format {
+  --   { Background = { Color = "#24273a"}},
+  --   { Text = "󱎕"}
+  -- }
+  new_tab = wezterm.format {
+    { Text = " 󰐕 "},
+  },
+  new_tab_hover = wezterm.format {
+    { Text = " 󰐕 "},
+  },
 }
+
 
 -- Minimize, fullscreen, close buttons that are on the tabbar
 config.window_decorations = "INTEGRATED_BUTTONS|RESIZE"
