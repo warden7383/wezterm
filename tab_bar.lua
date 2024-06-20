@@ -90,7 +90,7 @@ wezterm.on("format-tab-title", function(tab, tabs, panes, config, hover, max_wid
 		{ Text = lCircle },
 		{ Background = { Color = background } },
 		{ Foreground = { Color = foreground } },
-		{ Text = index .. "⋄" .. title }, --⋄ ♦ 
+		{ Text = index .. "•" .. title }, --⋄ ♦ 
 		{ Background = { Color = edge_background } },
 		{ Foreground = { Color = edge_foreground } },
 		{ Text = rCircle },
