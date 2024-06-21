@@ -23,7 +23,6 @@ config.color_scheme = "tokyonight_night"
 config.colors = tab_bar.colors()
 
 if wezterm.target_triple == "aarch64-apple-darwin" then
-	config.default_prog = { "zsh" }
 	config.font =
 		wezterm.font("JetBrainsMonoNL Nerd Font", { weight = "DemiBold", stretch = "Normal", style = "Normal" })
 	config.font_size = 13.0
@@ -79,9 +78,9 @@ config.tab_bar_at_bottom = true
 
 --FROM OFFICIAL DOCS
 -- wezterm.on("update-right-status", function(window, pane)
-	-- window:set_left_status("[Left Component] ")
-	-- window:set_left_status(" ")
-	-- window:set_right_status("[Right Component] ")
+-- window:set_left_status("[Left Component] ")
+-- window:set_left_status(" ")
+-- window:set_right_status("[Right Component] ")
 -- end)
 
 config.use_fancy_tab_bar = false
