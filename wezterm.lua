@@ -28,7 +28,6 @@
 
 local wezterm = require("wezterm")
 local tab_bar = require("tab_bar")
-local catppuccinM = wezterm.get_builtin_color_schemes()["Catppuccin Macchiato"]
 -- local config = {}
 local config = wezterm.config_builder()
 local smart_splits = wezterm.plugin.require("https://github.com/mrjones2014/smart-splits.nvim")
@@ -105,25 +104,62 @@ config.animation_fps = 1
 
 config.tab_bar_style = {
 	window_hide = wezterm.format({
+    { Attribute = { Intensity = "Bold" } },
 		{ Background = { Color = "#24273a" } },
 		{ Foreground = { Color = "#eed49f" } },
 		{ Text = "    " },
 	}),
+  window_hide_hover = wezterm.format({
+		{ Background = { Color = "#8bd5ca" } },
+		{ Foreground = { Color = "#363a4f" } },
+		{ Text = "    " },
+  }),
+
 	window_maximize = wezterm.format({
+    { Attribute = { Intensity = "Bold" } },
 		{ Background = { Color = "#24273a" } },
 		{ Foreground = { Color = "#a6da95" } },
 		{ Text = "   " },
 	}),
+  window_maximize_hover = wezterm.format({
+		{ Background = { Color = "#8bd5ca" } },
+		{ Foreground = { Color = "#363a4f" } },
+		{ Text = "   " },
+  }),
+
 	window_close = wezterm.format({
+    { Attribute = { Intensity = "Bold" } },
 		{ Background = { Color = "#24273a" } },
 		{ Foreground = { Color = "#ed8796" } },
 		{ Text = "   " },
 	}),
+  window_close_hover = wezterm.format({
+		{ Background = { Color = "#8bd5ca" } },
+		{ Foreground = { Color = "#363a4f" } },
+		{ Text = "   " },
+  }),
+
 	new_tab = wezterm.format({
-		{ Text = " 󰐕 " },
+    { Background = { Color = "None" } },
+    { Foreground = { Color = "#24273a" } },
+    { Text = " "},
+		{ Background = { Color = "#24273a" } },
+		{ Foreground = { Color = "#b7bdf8" } },
+		{ Text = "󰐕" },
+		{ Background = { Color = "None" } },
+		{ Foreground = { Color = "#24273a" } },
+		{ Text = ""},
 	}),
 	new_tab_hover = wezterm.format({
-		{ Text = " 󰐕 " },
+    { Background = { Color = "None" } },
+    { Foreground = { Color = "#8bd5ca" } },
+    { Text = " "},
+		{ Background = { Color = "#8bd5ca" } },
+		{ Foreground = { Color = "#363a4f" } },
+		{ Text = "󰐕" },
+		{ Background = { Color = "None" } },
+		{ Foreground = { Color = "#8bd5ca" } },
+		{ Text = ""},
 	}),
 }
 
@@ -137,11 +173,11 @@ config.show_tab_index_in_tab_bar = false
 config.tab_bar_at_bottom = true
 
 --FROM OFFICIAL DOCS
-wezterm.on("update-right-status", function(window, pane)
+-- wezterm.on("update-right-status", function(window, pane)
 	-- window:set_left_status("[Left Component] ")
 	-- window:set_left_status(" ")
 	-- window:set_right_status("[Right Component] ")
-end)
+-- end)
 
 config.use_fancy_tab_bar = false
 -- config.show_tabs_in_tab_bar = false

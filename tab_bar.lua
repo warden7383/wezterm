@@ -28,14 +28,14 @@
 
 local wezterm = require("wezterm")
 
-local lCircle = ""
+local lCircle = " "
 local rCircle = ""
 
 wezterm.on("update-right-status", function(window, pane)
 	window:set_left_status(wezterm.format({
-		{ Background = { Color = "#24273a" } },
+		{ Background = { Color = "None" } },
 		{ Foreground = { Color = "#eed49f" } },
-		{ Text = " 󰄛  " }, -- 󰮯
+		{ Text = " 󰄛" }, -- 󰮯
 	}))
 	-- window:set_right_status("[Right Component] ")
 end)
@@ -69,12 +69,11 @@ wezterm.on("format-tab-title", function(tab, tabs, panes, config, hover, max_wid
 		edge_foreground = "#494d64"
 	elseif hover then
 		background = "#8bd5ca"
-		edge_background = "#363a4f"
 		foreground = "#363a4f"
 		edge_foreground = "#8bd5ca"
 	else
-		edge_foreground = "#181926"
-		background = "#181926"
+		edge_foreground = "#1e2030" -- #24273a
+		background = "#1e2030" -- #24273a   #181926  #1e2030
 		foreground = "#5b6078"
 	end
 
