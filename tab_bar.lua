@@ -27,6 +27,7 @@
 -- crust: &crust #181926"
 
 local wezterm = require("wezterm")
+local bar = {}
 
 local lCircle = " "
 local rCircle = ""
@@ -96,46 +97,115 @@ wezterm.on("format-tab-title", function(tab, tabs, panes, config, hover, max_wid
 	}
 end)
 
-return {
-	tab_bar = {
-		background = "NONE",
-		active_tab = {
-			bg_color = "#181926",
-			fg_color = "#c6a0f6",
-			intensity = "Bold",
-			underline = "None",
-			italic = true,
-		},
+-- Displays the tab bar colors
+function bar.colors()
+  return {
+    tab_bar = {
+      background = "NONE",
+      active_tab = {
+        bg_color = "#181926",
+        fg_color = "#c6a0f6",
+        intensity = "Bold",
+        underline = "None",
+        italic = true,
+      },
 
-		inactive_tab = {
-			bg_color = "#181926",
-			fg_color = "#5b6078",
-			intensity = "Normal",
-			underline = "None",
-		},
+      inactive_tab = {
+        bg_color = "#181926",
+        fg_color = "#5b6078",
+        intensity = "Normal",
+        underline = "None",
+      },
 
-		inactive_tab_hover = {
-			bg_color = "#8bd5ca",
-			fg_color = "#363a4f",
-			intensity = "Bold",
-			underline = "None",
-			italic = true,
-		},
+      inactive_tab_hover = {
+        bg_color = "#8bd5ca",
+        fg_color = "#363a4f",
+        intensity = "Bold",
+        underline = "None",
+        italic = true,
+      },
 
-		-- new tab button
-		new_tab = {
-			bg_color = "#24273a",
-			fg_color = "#b7bdf8",
-			intensity = "Bold",
-			underline = "None",
-			italic = false,
-		},
+      -- new tab button
+      new_tab = {
+        bg_color = "#24273a",
+        fg_color = "#b7bdf8",
+        intensity = "Bold",
+        underline = "None",
+        italic = false,
+      },
 
-		new_tab_hover = {
-			bg_color = "#8bd5ca",
-			fg_color = "#363a4f",
-			intensity = "Bold",
-			underline = "None",
-		},
-	},
-}
+      new_tab_hover = {
+        bg_color = "#8bd5ca",
+        fg_color = "#363a4f",
+        intensity = "Bold",
+        underline = "None",
+      },
+    },
+  } 
+end
+
+-- Displays the new_tab, minimize, maximize, close buttons
+function bar.miscButtons()
+  return {
+    window_hide = wezterm.format({
+      { Attribute = { Intensity = "Bold" } },
+      { Background = { Color = "#24273a" } },
+      { Foreground = { Color = "#eed49f" } },
+      { Text = "    " },
+    }),
+    window_hide_hover = wezterm.format({
+      { Background = { Color = "#8bd5ca" } },
+      { Foreground = { Color = "#363a4f" } },
+      { Text = "    " },
+    }),
+
+    window_maximize = wezterm.format({
+      { Attribute = { Intensity = "Bold" } },
+      { Background = { Color = "#24273a" } },
+      { Foreground = { Color = "#a6da95" } },
+      { Text = "   " },
+    }),
+    window_maximize_hover = wezterm.format({
+      { Background = { Color = "#8bd5ca" } },
+      { Foreground = { Color = "#363a4f" } },
+      { Text = "   " },
+    }),
+
+    window_close = wezterm.format({
+      { Attribute = { Intensity = "Bold" } },
+      { Background = { Color = "#24273a" } },
+      { Foreground = { Color = "#ed8796" } },
+      { Text = "   " },
+    }),
+    window_close_hover = wezterm.format({
+      { Background = { Color = "#8bd5ca" } },
+      { Foreground = { Color = "#363a4f" } },
+      { Text = "   " },
+    }),
+
+    new_tab = wezterm.format({
+      { Background = { Color = "None" } },
+      { Foreground = { Color = "#24273a" } },
+      { Text = " "},
+      { Background = { Color = "#24273a" } },
+      { Foreground = { Color = "#b7bdf8" } },
+      { Text = "󰐕" },
+      { Background = { Color = "None" } },
+      { Foreground = { Color = "#24273a" } },
+      { Text = ""},
+    }),
+    new_tab_hover = wezterm.format({
+      { Background = { Color = "None" } },
+      { Foreground = { Color = "#8bd5ca" } },
+      { Text = " "},
+      { Background = { Color = "#8bd5ca" } },
+      { Foreground = { Color = "#363a4f" } },
+      { Text = "󰐕" },
+      { Background = { Color = "None" } },
+      { Foreground = { Color = "#8bd5ca" } },
+      { Text = ""},
+    }),
+  }
+end
+
+return bar

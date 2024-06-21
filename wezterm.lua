@@ -48,10 +48,10 @@ smart_splits.apply_to_config(config, {
 
 config.color_scheme_dirs = { "colors/tokyonight_night" }
 config.color_scheme = "tokyonight_night"
-config.colors = tab_bar
+config.colors = tab_bar.colors()
 
 if wezterm.target_triple == "aarch64-apple-darwin" then
-	print("im on mac")
+	config.default_prog = { "zsh" }
 	config.font =
 		wezterm.font("JetBrainsMonoNL Nerd Font", { weight = "DemiBold", stretch = "Normal", style = "Normal" })
 	config.font_size = 13.0
@@ -68,13 +68,7 @@ if wezterm.target_triple == "aarch64-apple-darwin" then
 			opacity = 0.85,
 		},
 	}
-
-	-- NOTE: might need to move this elsewhere?
-	config.window_frame = {
-		font_size = 14.0,
-	}
 elseif wezterm.target_triple == "x86_64-pc-windows-msvc" then
-	print("im on windows")
 	config.default_prog = { "pwsh.exe" }
 	config.font =
 		wezterm.font("JetBrainsMonoNL Nerd Font", { weight = "Regular", stretch = "Normal", style = "Normal" }) -- C:\USERS\ANDREW NG\APPDATA\LOCAL\MICROSOFT\WINDOWS\FONTS\JETBRAINSMONONLNERDFONT-REGULAR.TTF, DirectWrite
@@ -93,8 +87,6 @@ elseif wezterm.target_triple == "x86_64-pc-windows-msvc" then
 		},
 	}
 else
-	print("im on linux")
-	print("wezterm is not configured for linux")
 end
 
 config.max_fps = 255 -- > 255 max fps returns a table error (at least on windows 11)
@@ -102,66 +94,7 @@ config.max_fps = 255 -- > 255 max fps returns a table error (at least on windows
 config.custom_block_glyphs = false
 config.animation_fps = 1
 
-config.tab_bar_style = {
-	window_hide = wezterm.format({
-    { Attribute = { Intensity = "Bold" } },
-		{ Background = { Color = "#24273a" } },
-		{ Foreground = { Color = "#eed49f" } },
-		{ Text = "    " },
-	}),
-  window_hide_hover = wezterm.format({
-		{ Background = { Color = "#8bd5ca" } },
-		{ Foreground = { Color = "#363a4f" } },
-		{ Text = "    " },
-  }),
-
-	window_maximize = wezterm.format({
-    { Attribute = { Intensity = "Bold" } },
-		{ Background = { Color = "#24273a" } },
-		{ Foreground = { Color = "#a6da95" } },
-		{ Text = "   " },
-	}),
-  window_maximize_hover = wezterm.format({
-		{ Background = { Color = "#8bd5ca" } },
-		{ Foreground = { Color = "#363a4f" } },
-		{ Text = "   " },
-  }),
-
-	window_close = wezterm.format({
-    { Attribute = { Intensity = "Bold" } },
-		{ Background = { Color = "#24273a" } },
-		{ Foreground = { Color = "#ed8796" } },
-		{ Text = "   " },
-	}),
-  window_close_hover = wezterm.format({
-		{ Background = { Color = "#8bd5ca" } },
-		{ Foreground = { Color = "#363a4f" } },
-		{ Text = "   " },
-  }),
-
-	new_tab = wezterm.format({
-    { Background = { Color = "None" } },
-    { Foreground = { Color = "#24273a" } },
-    { Text = " "},
-		{ Background = { Color = "#24273a" } },
-		{ Foreground = { Color = "#b7bdf8" } },
-		{ Text = "󰐕" },
-		{ Background = { Color = "None" } },
-		{ Foreground = { Color = "#24273a" } },
-		{ Text = ""},
-	}),
-	new_tab_hover = wezterm.format({
-    { Background = { Color = "None" } },
-    { Foreground = { Color = "#8bd5ca" } },
-    { Text = " "},
-		{ Background = { Color = "#8bd5ca" } },
-		{ Foreground = { Color = "#363a4f" } },
-		{ Text = "󰐕" },
-		{ Background = { Color = "None" } },
-		{ Foreground = { Color = "#8bd5ca" } },
-		{ Text = ""},
-	}),
-}
+config.tab_bar_style = tab_bar.miscButtons()
 
 -- Minimize, fullscreen, close buttons that are on the tabbar
 config.window_decorations = "INTEGRATED_BUTTONS|RESIZE"
