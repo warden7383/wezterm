@@ -78,11 +78,15 @@ wezterm.on("format-tab-title", function(tab, tabs, panes, config, hover, max_wid
 		foreground = "#5b6078"
 	end
 
-	local title = tab_title(tab)
+	local title = tab_title(tab) 
 
-	-- ensure that the titles fit in the available space,
-	-- and that we have room for the edges.
-	title = wezterm.truncate_right(title, max_width - 2)
+  -- truncates the title string if the length + (rounded edges + index + index symbol)
+  -- is greater than or equal to the tab_max_width setting to allow
+  -- for printing the right edge and preventing it from cutting that edge out
+  if((wezterm.column_width(title)) >= max_width - 4) then
+    title = wezterm.truncate_right(title, max_width - 6)
+    title = title .. "…"
+  end
 
 	return {
 		{ Background = { Color = edge_background } },
@@ -90,7 +94,7 @@ wezterm.on("format-tab-title", function(tab, tabs, panes, config, hover, max_wid
 		{ Text = lCircle },
 		{ Background = { Color = background } },
 		{ Foreground = { Color = foreground } },
-		{ Text = index .. "•" .. title }, --⋄ ♦ 
+		{ Text = index .. "•" .. title }, --⋄ ♦   …
 		{ Background = { Color = edge_background } },
 		{ Foreground = { Color = edge_foreground } },
 		{ Text = rCircle },

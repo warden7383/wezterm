@@ -66,6 +66,7 @@ config.custom_block_glyphs = false
 config.animation_fps = 1
 
 config.tab_bar_style = tab_bar.miscButtons()
+config.tab_max_width = 16
 
 -- Minimize, fullscreen, close buttons that are on the tabbar
 config.window_decorations = "INTEGRATED_BUTTONS|RESIZE"
