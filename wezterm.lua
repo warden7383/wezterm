@@ -1,5 +1,7 @@
 local wezterm = require("wezterm")
 local tab_bar = require("tab_bar")
+local keymaps = require("keymaps")
+
 -- local config = {}
 local config = wezterm.config_builder()
 local smart_splits = wezterm.plugin.require("https://github.com/mrjones2014/smart-splits.nvim")
@@ -59,6 +61,14 @@ elseif wezterm.target_triple == "x86_64-pc-windows-msvc" then
 	}
 else
 end
+
+config.leader = {
+  key = ";",
+  mods = "ALT",
+  timeout_miliseconds = 1000
+}
+
+config.keys = keymaps
 
 config.max_fps = 255 -- > 255 max fps returns a table error (at least on windows 11)
 -- config.allow_square_glyphs_to_overflow_width = "Always"
