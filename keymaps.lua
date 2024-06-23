@@ -45,6 +45,13 @@ return {
     action = action.AdjustPaneSize { "Right", 3 },
   },
 
+  {
+    key = "s",
+    mods = "LEADER",
+    action = action.PaneSelect { mode = "SwapWithActive" },
+  },
+
+  { key = "f", mods = "LEADER", action = action.PaneSelect },
 
   { key = "c", mods = "LEADER", action = action.ActivateCopyMode, },
 

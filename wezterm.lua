@@ -68,6 +68,7 @@ config.leader = {
   timeout_miliseconds = 1000
 }
 
+config.disable_default_key_bindings = true
 config.keys = keymaps
 
 config.max_fps = 255 -- > 255 max fps returns a table error (at least on windows 11)
