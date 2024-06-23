@@ -8,6 +8,6 @@ __Or__:
 ```
 git clone https://github.com/warden7383/wezterm.git
 ```
-###Eye Candy
+### Eye Candy
 
-###Keymaps
+### Keymaps
