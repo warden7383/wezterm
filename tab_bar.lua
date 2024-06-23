@@ -47,13 +47,22 @@ end)
 -- title of the active pane in that tab.
 function tab_title(tab_info)
 	local title = tab_info.tab_title
+  local pane = tab_info.active_pane
+  local process = pane.foreground_process_name
+  local formattedTitle = ""
 	-- if the tab title is explicitly set, take that
 	if title and #title > 0 then
 		return title
 	end
 	-- Otherwise, use the title from the active pane
 	-- in that tab
-	return tab_info.active_pane.title
+  if string.find(process, "nvim") then
+    return " nvim"
+  else 
+    formattedTitle = string.gsub(pane.title, "%.exe%s?$", "")
+    return formattedTitle
+  end
+	-- return tab_info.active_pane.title
 end
 
 wezterm.on("format-tab-title", function(tab, tabs, panes, config, hover, max_width)
