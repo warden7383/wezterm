@@ -107,6 +107,11 @@ config.window_padding = {
 	bottom = 0,
 }
 
+config.command_palette_bg_color = "#24273a"
+config.command_palette_fg_color = "#cad3f5"
+config.command_palette_font_size = 12
+config.command_palette_rows = 14
+
 config.front_end = "WebGpu"
 config.webgpu_power_preference = "HighPerformance"
 config.unicode_version = 14
