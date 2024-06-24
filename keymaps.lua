@@ -85,5 +85,10 @@ return {
   { key = "l", mods = "LEADER", action = action.ShowLauncher },
   { key = "n", mods = "LEADER", action = action.SpawnWindow },
 
+  {
+    key = "t",
+    mods = "CTRL|SHIFT",
+    action = action.SpawnTab "CurrentPaneDomain",
+  },
 
 }
