@@ -57,7 +57,7 @@ function tab_title(tab_info)
 	-- Otherwise, use the title from the active pane
 	-- in that tab
   if string.find(process, "nvim") then
-    return " nvim"
+    return "nvim"
   else 
     formattedTitle = string.gsub(pane.title, "%.exe%s?$", "")
     return formattedTitle
@@ -68,26 +68,67 @@ end
 wezterm.on("format-tab-title", function(tab, tabs, panes, config, hover, max_width)
 	local edge_background = "None"
 	local edge_foreground = ""
+	local edge_foregroundR = "" -- right side of the circle
 	local background = ""
 	local foreground = ""
+  local backgroundIcon = ""
+  local foregroundIcon = ""
 
 	local index = tonumber(tab.tab_index) + 1
+	local title = tab_title(tab) 
 
+  -- NOTE:  looks extremely messy, may need a rewrite
+  -- also will need to recalculate the number of characters to truncate 
+  -- as we are adding an icon + " " + " " into the tab title name 
+  -- thus, another 3 chars are taking up the max_width title length of 16 
 	if tab.is_active then
-		background = "#494d64"
-		foreground = "#c6a0f6"
-		edge_foreground = "#494d64"
+    if string.find(title, "nvim") then
+      backgroundIcon = "#c6a0f6"
+      foregroundIcon = "#24273a"
+      foreground = "#c6a0f6"
+      edge_foreground = "#c6a0f6"
+      edge_foregroundR = "#494d64"
+      background = "#494d64"
+    else
+      background = "#494d64"
+      foreground = "#c6a0f6"
+      edge_foreground = "#494d64"
+    end
+		-- background = "#494d64"
+		-- foreground = "#c6a0f6"
+		-- edge_foreground = "#494d64"
 	elseif hover then
-		background = "#8bd5ca"
-		foreground = "#363a4f"
-		edge_foreground = "#8bd5ca"
+    if string.find(title, "nvim") then
+      -- TODO:
+    else
+      background = "#8bd5ca"
+      foreground = "#363a4f"
+      edge_foreground = "#8bd5ca"
+
+    end
+		-- background = "#8bd5ca"
+		-- foreground = "#363a4f"
+		-- edge_foreground = "#8bd5ca"
 	else
-		edge_foreground = "#1e2030" -- #24273a
-		background = "#1e2030" -- #24273a   #181926  #1e2030
-		foreground = "#5b6078"
+    if string.find(title, "nvim") then
+      backgroundIcon = "#24273a"
+      foregroundIcon = "#5b6078"
+      foreground = "#5b6078"
+      edge_foreground = "#24273a"
+      edge_foregroundR = "#1e2030"
+      background = "#1e2030"
+    else
+      edge_foreground = "#1e2030"
+      background = "#1e2030"
+      foreground = "#5b6078"
+
+    end
+		-- edge_foreground = "#1e2030" -- #24273a
+		-- background = "#1e2030" -- #24273a   #181926  #1e2030
+		-- foreground = "#5b6078"
 	end
 
-	local title = tab_title(tab) 
+	-- local title = tab_title(tab) 
 
   -- truncates the title string if the length + (rounded edges + index + index symbol)
   -- is greater than or equal to the tab_max_width setting to allow
@@ -97,18 +138,60 @@ wezterm.on("format-tab-title", function(tab, tabs, panes, config, hover, max_wid
     title = title .. "…"
   end
 
-	return {
-		{ Background = { Color = edge_background } },
-		{ Foreground = { Color = edge_foreground } },
-		{ Text = lCircle },
-		{ Background = { Color = background } },
-		{ Foreground = { Color = foreground } },
-		{ Text = index .. "•" .. title }, --⋄ ♦   …
-		{ Background = { Color = edge_background } },
-		{ Foreground = { Color = edge_foreground } },
-		{ Text = rCircle },
-	}
+  -- TODO: this code is not efficent and hardcoded, find a way to
+  -- display an icon based on program name 
+  -- (tho atm its just nvim, pwsh, zsh, bash(?))
+  if string.find(title, "nvim") then
+    return {
+      { Background = { Color = edge_background } },
+      { Foreground = { Color = edge_foreground } },
+      { Text = lCircle },
+      { Background = { Color = backgroundIcon } },
+      { Foreground = { Color = foregroundIcon } },
+      { Text = " " },
+      { Background = { Color = background } },
+      { Foreground = { Color = foreground } },
+      { Text = " " .. index .. "•" .. title }, --⋄ ♦   …
+      { Background = { Color = edge_background } },
+      { Foreground = { Color = edge_foregroundR } },
+      { Text = rCircle },
+    }
+  else
+    return {
+      { Background = { Color = edge_background } },
+      { Foreground = { Color = edge_foreground } },
+      { Text = lCircle },
+      { Background = { Color = background } },
+      { Foreground = { Color = foreground } },
+      { Text = index .. "•" .. title }, --⋄ ♦   …
+      { Background = { Color = edge_background } },
+      { Foreground = { Color = edge_foreground } },
+      { Text = rCircle },
+    }
+  end
+
+	-- return {
+	-- 	{ Background = { Color = edge_background } },
+	-- 	{ Foreground = { Color = edge_foreground } },
+	-- 	{ Text = lCircle },
+	-- 	{ Background = { Color = background } },
+	-- 	{ Foreground = { Color = foreground } },
+	-- 	{ Text = index .. "•" .. title }, --⋄ ♦   …
+	-- 	{ Background = { Color = edge_background } },
+	-- 	{ Foreground = { Color = edge_foreground } },
+	-- 	{ Text = rCircle },
+	-- }
 end)
+
+-- wezterm.on ("update-right-status", function(window, pane)
+--   if string.find(pane.title, "Copy Mode") then
+--     window:set_left_status(wezterm.format({
+--       { Background = { Color = "#ee99a0" } },
+--       { Foreground = { Color = "#24273a" } },
+--       { Text = "Copy Mode" }, -- 󰮯
+--     }))
+--   end
+-- end)
 
 -- Displays the tab bar colors
 function bar.colors()
