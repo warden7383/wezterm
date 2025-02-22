@@ -33,13 +33,13 @@ if wezterm.target_triple == "aarch64-apple-darwin" then
 	config.background = {
 		{
 			-- source = { File = wezterm.config_dir .. "/background/Hell's_Paradise_Jigokuraku_Sagiri.jpg" },
-			source = { File = wezterm.config_dir .. "/background/KaoruHanawaRintoSaku/ch19.png" }, -- ch91 ch19 ch29
+			source = { File = wezterm.config_dir .. "/background/KaoruHanawaRintoSaku/ch19test.png" }, -- ch91 ch19 ch29
 			repeat_x = "NoRepeat",
 			repeat_y = "NoRepeat",
 			vertical_align = "Middle",
-			horizontal_align = "Center",
-			height = "100%",
-			width = "100%",
+			horizontal_align = "Right",
+			height = "Contain",
+			width = "Contain",
 		},
 		{
 			source = { Color = "#141524" }, -- #191a2e #131624 #1a1b26 (default tokyonight_night background)
@@ -58,13 +58,13 @@ elseif wezterm.target_triple == "x86_64-pc-windows-msvc" then
 	config.background = {
 		{
 			-- source = { File = wezterm.config_dir .. "/background/Hell's_Paradise_Jigokuraku_Sagiri.jpg" },
-			source = { File = wezterm.config_dir .. "/background/KaoruHanawaRintoSaku/ch19.png" }, -- ch91 ch19 ch29
+			source = { File = wezterm.config_dir .. "/background/KaoruHanawaRintoSaku/ch19test.png" }, -- ch91 ch19 ch29
 			repeat_x = "NoRepeat",
 			repeat_y = "NoRepeat",
 			vertical_align = "Middle",
-			horizontal_align = "Center",
-			height = "100%",
-			width = "100%",
+			horizontal_align = "Right",
+			height = "Contain",
+			width = "Contain",
 		},
 		{
 			source = { Color = "#141524" }, -- #191a2e #131624 #1a1b26 (default tokyonight_night background)
