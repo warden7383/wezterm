@@ -45,7 +45,7 @@ if wezterm.target_triple == "aarch64-apple-darwin" then
 			source = { Color = "#141524" }, -- #191a2e #131624 #1a1b26 (default tokyonight_night background)
 			height = "100%",
 			width = "100%",
-			opacity = 0.85,
+			opacity = 0.98,
 		},
 	}
 elseif wezterm.target_triple == "x86_64-pc-windows-msvc" then
