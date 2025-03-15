@@ -71,7 +71,7 @@ elseif wezterm.target_triple == "x86_64-pc-windows-msvc" then
 			height = "100%",
 			width = "100%",
 			-- opacity = 0.92,
-			opacity = 0.992,
+			opacity = 0.990,
 		},
 	}
 else
